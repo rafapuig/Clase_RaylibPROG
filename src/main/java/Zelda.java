@@ -3,8 +3,11 @@ import static com.raylib.Helpers.newRectangle;
 import static com.raylib.Helpers.newVector2;
 import static com.raylib.Raylib.*;
 
-final float SCALE = 8f;
+final float SCALE = 4f;
 final int TILE_SIZE = 16;
+
+final int TILE_ROWS = 18;
+final int TILE_COLS = TILE_ROWS * 16 / 9;
 
 final int CHARACTER_SPRITE_OFFSET_Y = 5;
 final int CHARACTER_SPRITE_WIDTH = TILE_SIZE;
@@ -35,6 +38,9 @@ void main() {
 
     Rectangle grassSprite = newRectangle(0, 0, TILE_SIZE, TILE_SIZE);
     Rectangle houseFrontSprite = newRectangle(TILE_SIZE * 6, 0, TILE_SIZE * 5, TILE_SIZE * 5);
+
+    Rectangle tile = newRectangle(0, 0, TILE_SIZE * SCALE, TILE_SIZE * SCALE);
+
 
     Vector2 housePosition = newVector2(TILE_SIZE * 5 * SCALE, TILE_SIZE * 5 * SCALE);
     Rectangle house = newRectangle(
@@ -81,6 +87,15 @@ void main() {
 
         BeginDrawing();
         ClearBackground(DARKBROWN);
+
+        for (int i = 0; i < TILE_ROWS; i++) {
+            for (int j = 0; j < TILE_COLS; j++) {
+                tile.x(j * TILE_SIZE * SCALE);
+                tile.y(i * TILE_SIZE * SCALE);
+                DrawTexturePro(overworldTexture, grassSprite, tile, Vector2Zero(), 0f, WHITE);
+            }
+        }
+
 
         DrawTexturePro(characterTexture, playerSprite, player, Vector2Zero(), 0f, WHITE);
 
