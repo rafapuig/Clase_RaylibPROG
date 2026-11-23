@@ -2,6 +2,8 @@ import static com.raylib.Colors.*;
 import static com.raylib.Helpers.newVector2;
 import static com.raylib.Raylib.*;
 
+final float SCALE = 2f;
+
 final int SCREEN_HEIGHT = 1080;
 final int SCREEN_WIDTH = SCREEN_HEIGHT * 16 / 9;
 
@@ -16,7 +18,7 @@ void main() {
     int posX = (GetScreenWidth() - overworldTexture.width()) / 2;
     int posY = (GetScreenHeight() - overworldTexture.height()) / 2;
 
-    Vector2 position = newVector2(posX, posY);
+    Vector2 position = newVector2(0, 0);
 
     while (!WindowShouldClose()) {
         BeginDrawing();
@@ -24,7 +26,7 @@ void main() {
 
         //DrawTexture(overworldTexture, posX, posY, WHITE);
         //DrawTextureV(overworldTexture, position, WHITE);
-        DrawTextureEx(overworldTexture, position, 0f, 2f, WHITE);
+        DrawTextureEx(overworldTexture, position, 0f, SCALE, WHITE);
 
         EndDrawing();
     }
