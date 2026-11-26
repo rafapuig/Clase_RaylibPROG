@@ -22,8 +22,8 @@ void main() {
         EndTextureMode();
 
         float scale = Math.min(
-                GetScreenWidth() / VIRTUAL_WIDTH,
-                GetScreenHeight() / VIRTUAL_HEIGHT
+                (float) GetScreenWidth() / VIRTUAL_WIDTH,
+                (float) GetScreenHeight() / VIRTUAL_HEIGHT
         );
 
         float width = VIRTUAL_WIDTH * scale;
@@ -36,7 +36,7 @@ void main() {
         ClearBackground(BLACK);
         DrawTexturePro(
                 virtualScreen.texture(),
-                newRectangle(0, 0, VIRTUAL_WIDTH, VIRTUAL_HEIGHT),
+                newRectangle(0, 0, VIRTUAL_WIDTH, -VIRTUAL_HEIGHT),
                 newRectangle(x, y, width, height),
                 Vector2Zero(),
                 0f,
@@ -44,6 +44,7 @@ void main() {
         );
         EndDrawing();
     }
+    UnloadRenderTexture(virtualScreen);
     CloseWindow();
 
 }
