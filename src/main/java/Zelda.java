@@ -84,7 +84,6 @@ void main() {
             player.y(GetScreenHeight() - player.height());
         }
 
-
         BeginDrawing();
         ClearBackground(DARKBROWN);
 
@@ -96,8 +95,12 @@ void main() {
             }
         }
 
-
+        // Dibuja el jugador
         DrawTexturePro(characterTexture, playerSprite, player, Vector2Zero(), 0f, WHITE);
+
+        // Dibujar la casa
+        DrawTexturePro(overworldTexture, houseFrontSprite, house, Vector2Zero(), 0f, WHITE);
+
 
         EndDrawing();
     }
